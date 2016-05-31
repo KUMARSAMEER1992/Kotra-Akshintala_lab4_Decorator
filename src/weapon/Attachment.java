@@ -37,47 +37,49 @@ public abstract class Attachment implements Weapon
 	@Override
 	public void updateTime(int time)
 	{
+		weapon.updateTime(time);
 	}
 
 	@Override
 	public int getMaxRange()
 	{
-		return 0;
+		return weapon.getMaxRange();
 	}
 
 	@Override
 	public int getMaxAmmo()
 	{
-		return 0;
+		return weapon.getMaxAmmo();
 	}
 
 	@Override
 	public int getBaseDamage()
 	{
-		return 0;
+		return weapon.getBaseDamage();
 	}
 
 	@Override
 	public int getRateOfFire()
 	{
-		return 0;
+		return weapon.getRateOfFire();
 	}
 
 	@Override
 	public int getActualAmmo()
 	{
-		return 0;
+		return weapon.getActualAmmo();
 	}
 
 	@Override
 	public void relod()
 	{
+		weapon.relod();
 	}
 
 	@Override
 	public int calculateDamage(int distence)
 	{
-		return 0;
+		return weapon.calculateDamage(distence);
 	}
 
 }

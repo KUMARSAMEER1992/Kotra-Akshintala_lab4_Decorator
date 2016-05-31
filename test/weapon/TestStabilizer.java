@@ -12,33 +12,43 @@ public class TestStabilizer
 	@Test
 	public void testOneAttachment() throws AttachmentException
 	{
-		Weapon weapon = new ChainGun();
+		Weapon weapon = new PlasmaCannon();
 		Stabilizer stabilizer = new Stabilizer(weapon);
-		assertEquals(6, stabilizer.fire(10));
+		assertEquals(62, stabilizer.fire(10));
 	}
 	
 	@Test
 	public void testMltipleAttachment() throws AttachmentException
 	{
-		Weapon weapon = new ChainGun();
+		Weapon weapon = new PlasmaCannon();
 		PowerBooster booster=new PowerBooster(weapon);
 		Stabilizer stabilizer = new Stabilizer(booster);
 		
-		assertEquals(16, stabilizer.fire(15));
+		assertEquals(108, stabilizer.fire(15));
+		weapon.updateTime(1);
 		assertEquals(0, stabilizer.fire(35));
 		
-		weapon = new ChainGun();
+		weapon = new PlasmaCannon();
 		Scope scope=new Scope(weapon);
 		stabilizer = new Stabilizer(scope);
 
-		assertEquals(12, stabilizer.fire(15));
+		assertEquals(77, stabilizer.fire(15));
+		weapon.updateTime(1);
 		assertEquals(0, stabilizer.fire(35));
+		
+		weapon = new PlasmaCannon();
+		stabilizer = new Stabilizer(weapon);
+		Stabilizer stabilizer2=new Stabilizer(stabilizer);
+		
+		assertEquals(77, stabilizer2.fire(15));
+		weapon.updateTime(1);
+		assertEquals(0, stabilizer2.fire(35));
 	}
 	
 	@Test(expected = AttachmentException.class)
 	public void testMaxAttachments() throws AttachmentException
 	{
-		Weapon weapon = new ChainGun();
+		Weapon weapon = new PlasmaCannon();
 		PowerBooster booster=new PowerBooster(weapon);
 		Stabilizer stabilizer = new Stabilizer(booster);
 		Scope scope=new Scope(stabilizer);

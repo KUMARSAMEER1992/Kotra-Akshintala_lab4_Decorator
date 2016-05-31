@@ -2,14 +2,17 @@ package weapon;
 
 public class ChainGun extends GenericWeapon
 {
-	private static final int CHAINGUN_BASE_DAMAGE = 15;
-	private static final int CHAINGUN_MAX_RANGE = 30;
-	private static final int CHAINGUN_RATE_OF_FIRE = 4;
-	private static final int CHAINGUN_MAX_AMMO = 40;
+	
 
 	public ChainGun()
 	{
-		super(CHAINGUN_BASE_DAMAGE, CHAINGUN_MAX_RANGE, CHAINGUN_RATE_OF_FIRE, CHAINGUN_MAX_AMMO);
+		/*
+		 * CHAINGUN_BASE_DAMAGE = 15;
+		 * CHAINGUN_MAX_RANGE = 30;
+		 * CHAINGUN_RATE_OF_FIRE = 4;
+		 * CHAINGUN_MAX_AMMO = 40;
+		 */
+		super(15, 30, 4, 40);
 	}
 
 	@Override

@@ -1,0 +1,160 @@
+package lifeform;
+
+import environment.Range;
+import gameplay.TimeObserver;
+import weapon.Weapon;
+
+/**
+ * This class consists members and functions related to LifeForm.
+ * @author : Sameer Kumar Kotra
+ */
+public abstract class LifeForm implements TimeObserver
+{
+	/**
+	 * String to store the name of the LifeForm.
+	 */
+	private String myName;
+
+	/**
+	 * int to store the life points of the LifeForm. It can be accessed by sub
+	 * classes.
+	 */
+	protected int currentLifePoints;
+
+	/**
+	 * int to store the strength of the LifeForm.
+	 */
+	protected int attachStrength;
+
+	// TODO
+	private Weapon weapon;
+
+	/**
+	 * Create an instance of LifeForm with given values.
+	 * @param name: The name of the life form.
+	 * @param points :The current starting life points of the life form.
+	 */
+	public LifeForm(String name, int points)
+	{
+		myName = name;
+		currentLifePoints = (points >= 0) ? points : 0;
+		attachStrength = 0;
+		weapon = null;
+	}
+
+	/**
+	 * Create an instance of LifeForm with given values.
+	 * @param name: The name of the life form.
+	 * @param points : The current starting life points of the life form.
+	 * @param strength: The Strength of the LifeForm.
+	 */
+	public LifeForm(String name, int points, int strength)
+	{
+		this(name, points);
+		this.attachStrength = (strength >= 0) ? strength : 0;
+	}
+
+	/**
+	 * Returns the name of the LifeForm.
+	 * @return the name of the life form.
+	 */
+	public String getName()
+	{
+		return myName;
+	}
+
+	/**
+	 * Returns the current life points of a LifeForm.
+	 * @return the amount of current life points the life form has.
+	 */
+	public int getCurrentLifePoints()
+	{
+		return currentLifePoints;
+	}
+
+	/**
+	 * Reduces the damage from current life points.
+	 * @param damage : specifies the damage to the LifeForm.
+	 */
+	public void takeHit(int damage)
+	{
+		if (damage > 0)
+		{
+			currentLifePoints -= damage;
+			currentLifePoints = (currentLifePoints >= 0) ? currentLifePoints : 0;
+		}
+	}
+
+	/**
+	 * Returns the strength of a LifeForm.
+	 * @return the strength the life form has.
+	 */
+	public int getAttachStrength()
+	{
+		return attachStrength;
+	}
+
+	/**
+	 * Used to attack a LifeForm.
+	 * lifeForm1.attack(lifeForm2).
+	 * lifeForm1:attacker.
+	 * lifeForm2:attacked.
+	 * @param lifeForm2 : It is attached by the calling LifeForm.
+	 */
+	public void attack(LifeForm lifeForm2)
+	{
+		if (getCurrentLifePoints() > 0)
+		{
+			if (weapon == null || weapon.getActualAmmo() == 0)
+			{
+				if (Range.distance <= 10)
+				{
+					lifeForm2.takeHit(getAttachStrength());
+				}
+			}
+			else
+			{
+				lifeForm2.takeHit(weapon.fire(Range.distance));
+			}
+		}
+	}
+
+	/**
+	 * When the time is changed the timer notifies this method of the Observer.
+	 * It performs nothing in here.
+	 * @param time : updated time
+	 */
+	@Override
+	public void updateTime(int time)
+	{
+	}
+
+	// TODO
+	public void pickUp(Weapon weapon)
+	{
+		// TODO
+		if (this.weapon == null)
+		{
+			this.weapon = weapon;
+		}
+	}
+
+	// TODO
+	public Weapon getWeapon()
+	{
+		return weapon;
+	}
+
+	// TODO
+	public void dropWeapon()
+	{
+		weapon = null;
+	}
+
+	// TODO
+	public void reload()
+	{
+		weapon.relod();
+	}
+
+}

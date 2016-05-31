@@ -25,5 +25,20 @@ public class TestPowerBooster
 		PowerBooster booster = new PowerBooster(stabilizer);
 		assertEquals(108, booster.fire(10));
 		assertEquals(0, booster.fire(25));
+		
+		weapon = new PlasmaCannon();
+		Scope scope=new Scope(weapon);
+		booster = new PowerBooster(scope);
+		assertEquals(131, booster.fire(10));
+		assertEquals(0, booster.fire(25));
+	}
+	
+	@Test(expected = AttachmentException.class)
+	public void testMaxAttachments() throws AttachmentException
+	{
+		Weapon weapon = new PlasmaCannon();
+		PowerBooster booster=new PowerBooster(weapon);
+		Stabilizer stabilizer = new Stabilizer(booster);
+		Scope scope=new Scope(stabilizer);
 	}
 }

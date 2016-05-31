@@ -73,7 +73,7 @@ public class TestLifeForm
 		lifeForm1.pickUp(weapon);
 
 		lifeForm1.attack(lifeForm2);
-		// Use strength to attach as it has 0 Ammo.
+		// Use strength to attack as it has 0 Ammo.
 		assertEquals(20, lifeForm2.getCurrentLifePoints());
 
 		Range.distance = 20;

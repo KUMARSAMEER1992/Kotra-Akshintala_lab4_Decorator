@@ -18,7 +18,7 @@ public class TestStabilizer
 	}
 	
 	@Test
-	public void testMltipleAttachment() throws AttachmentException
+	public void testMultipleAttachment() throws AttachmentException
 	{
 		Weapon weapon;
 		

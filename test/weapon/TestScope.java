@@ -30,7 +30,7 @@ public class TestScope
 	 * @throws AttachmentException
 	 */
 	@Test
-	public void testMltipleAttachment() throws AttachmentException
+	public void testMultipleAttachment() throws AttachmentException
 	{
 		Weapon weapon;
 

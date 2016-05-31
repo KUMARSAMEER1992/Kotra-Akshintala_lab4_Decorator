@@ -12,33 +12,44 @@ public class TestPowerBooster
 	@Test
 	public void testOneAttachment() throws AttachmentException
 	{
-		Weapon weapon = new PlasmaCannon();
+		Weapon weapon = new ChainGun();
 		PowerBooster booster = new PowerBooster(weapon);
-		assertEquals(87, booster.fire(10));
+		assertEquals(9, booster.fire(10));
 	}
 
 	@Test
 	public void testMltipleAttachment() throws AttachmentException
 	{
-		Weapon weapon = new PlasmaCannon();
-		Stabilizer stabilizer =new Stabilizer(weapon);
-		PowerBooster booster = new PowerBooster(stabilizer);
-		assertEquals(108, booster.fire(10));
-		assertEquals(0, booster.fire(25));
-		
-		weapon = new PlasmaCannon();
-		Scope scope=new Scope(weapon);
-		booster = new PowerBooster(scope);
-		assertEquals(131, booster.fire(10));
-		assertEquals(0, booster.fire(25));
+		Weapon weapon;
+
+		weapon = new ChainGun();
+		Scope scope = new Scope(weapon);
+		PowerBooster booster = new PowerBooster(scope);
+
+		assertEquals(15, booster.fire(10));
+		assertEquals(0, booster.fire(35));
+
+		weapon = new ChainGun();
+		Stabilizer stabilizer = new Stabilizer(weapon);
+		booster = new PowerBooster(stabilizer);
+
+		assertEquals(11, booster.fire(10));
+		assertEquals(0, booster.fire(35));
+
+		weapon = new ChainGun();
+		booster = new PowerBooster(weapon);
+		PowerBooster booster2 = new PowerBooster(booster);
+
+		assertEquals(17, booster2.fire(10));
+		assertEquals(0, booster2.fire(35));
 	}
-	
+
 	@Test(expected = AttachmentException.class)
 	public void testMaxAttachments() throws AttachmentException
 	{
-		Weapon weapon = new PlasmaCannon();
-		PowerBooster booster=new PowerBooster(weapon);
+		Weapon weapon = new ChainGun();
+		PowerBooster booster = new PowerBooster(weapon);
 		Stabilizer stabilizer = new Stabilizer(booster);
-		Scope scope=new Scope(stabilizer);
+		Scope scope = new Scope(stabilizer);
 	}
 }

@@ -20,9 +20,18 @@ public class TestScope
 	@Test
 	public void testMltipleAttachment() throws AttachmentException
 	{
-		Weapon weapon = new Pistol();
+		Weapon weapon;
+
+		weapon = new Pistol();
+		Scope scope = new Scope(weapon);
+		Scope scope2 = new Scope(scope);
+
+		assertEquals(19, scope2.fire(10));
+		assertEquals(0, scope2.fire(30));
+
+		weapon = new Pistol();
 		Stabilizer stabilizer = new Stabilizer(weapon);
-		Scope scope = new Scope(stabilizer);
+		scope = new Scope(stabilizer);
 
 		assertEquals(16, scope.fire(10));
 		assertEquals(0, scope.fire(30));

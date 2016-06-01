@@ -7,9 +7,17 @@ import org.junit.Test;
 
 import exceptions.AttachmentException;
 
+/**
+ * The test cases for the Attachment class.
+ * @author Prathyusha Akshintala.
+ */
 public class TestAttachment
 {
 
+	/**
+	 * Tests the maximum number of attachments added to the Weapon.
+	 * @throws AttachmentException
+	 */
 	@Test(expected = AttachmentException.class)
 	public void testInitilization() throws AttachmentException
 	{
@@ -21,7 +29,5 @@ public class TestAttachment
 		Attachment attach2 = new MockAttachment(attach);
 
 		Attachment attch3 = new MockAttachment(attach2);
-
 	}
-
 }

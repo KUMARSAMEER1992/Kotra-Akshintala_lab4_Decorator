@@ -7,7 +7,7 @@ import org.junit.Test;
 import exceptions.AttachmentException;
 
 /**
- * The test cases for the Generic Weapon class.
+ * The test cases for the Scope class.
  * @author Sameer Kumar Kotra
  */
 public class TestScope

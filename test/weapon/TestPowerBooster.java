@@ -7,6 +7,7 @@ import org.junit.Test;
 import exceptions.AttachmentException;
 
 /**
+ * The test cases for the PowerBooster class.
  * @author Prathyusha Akshintala.
  * @author Sameer Kumar Kotra
  */
@@ -30,7 +31,7 @@ public class TestPowerBooster
 	 * @throws AttachmentException
 	 */
 	@Test
-	public void testMltipleAttachment() throws AttachmentException
+	public void testMultipleAttachment() throws AttachmentException
 	{
 		Weapon weapon;
 

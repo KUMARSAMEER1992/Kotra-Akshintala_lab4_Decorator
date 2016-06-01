@@ -12,10 +12,10 @@ public class TestPistol
 {
 
 	/**
-	 * Test the initilization of Pistol.
+	 * Test the initialization of Pistol.
 	 */
 	@Test
-	public void testInitilization()
+	public void testInitialization()
 	{
 		Pistol pistol = new Pistol();
 		assertEquals(10, pistol.getBaseDamage());

@@ -1,6 +1,3 @@
-/**
- * @author Sameer Kumar Kotra
- */
 package lifeform;
 
 import org.junit.runner.RunWith;
@@ -23,6 +20,7 @@ import weapon.TestScope;
 import weapon.TestStabilizer;
 
 /**
+ * Test Suit contains all Test Classes.
  * @author Sameer Kumar Kotra
  */
 @RunWith(Suite.class)

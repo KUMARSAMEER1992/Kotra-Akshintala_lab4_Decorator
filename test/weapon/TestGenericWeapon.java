@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import gameplay.SimpleTimer;
+
 /**
  * The test cases for the Generic Weapon class.
  * @author Sameer Kumar Kotra
@@ -29,14 +31,19 @@ public class TestGenericWeapon
 	@Test
 	public void testRateOfFire()
 	{
+		SimpleTimer timer = new SimpleTimer();
 		GenericWeapon weapon = new MockGenericWeapon(10, 25, 2, 10);
+		timer.addTimeObserver(weapon);
+
 		assertEquals(5, weapon.fire(10));
 		assertEquals(5, weapon.fire(10));
 
 		// Can not fire as for this round it completed max rate of fire.
 		assertEquals(0, weapon.fire(10));
 
-		weapon.updateTime(1);
+		timer.updateRound();
+		timer.timeChanged();
+
 		assertEquals(5, weapon.fire(10));
 	}
 
@@ -84,10 +91,10 @@ public class TestGenericWeapon
 	}
 
 	/**
-	 * test the intilization of the mock weapon.
+	 * test the initialization of the mock weapon.
 	 */
 	@Test
-	public void testInitilization()
+	public void testInitialization()
 	{
 		GenericWeapon weapon = new MockGenericWeapon(10, 25, 2, 10);
 		assertEquals(10, weapon.getBaseDamage());

@@ -4,21 +4,16 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+/**
+ * The test cases for the Generic Weapon class.
+ * @author Sameer Kumar Kotra
+ */
 public class TestGenericWeapon
 {
 
-	@Test
-	public void testInitilization()
-	{
-		GenericWeapon weapon = new MockGenericWeapon(10, 25, 2, 10);
-		assertEquals(10, weapon.getBaseDamage());
-		assertEquals(25, weapon.getMaxRange());
-		assertEquals(2, weapon.getRateOfFire());
-		assertEquals(10, weapon.getMaxAmmo());
-		assertEquals(10, weapon.getActualAmmo());
-		assertEquals(0, weapon.getFireCounter());
-	}
-
+	/**
+	 * Tests weather ammo is used when weapon is fired.
+	 */
 	@Test
 	public void testUseAmmo()
 	{
@@ -28,6 +23,9 @@ public class TestGenericWeapon
 		assertEquals(9, weapon.getActualAmmo());
 	}
 
+	/**
+	 * Tests weapon fires in limit in one round.
+	 */
 	@Test
 	public void testRateOfFire()
 	{
@@ -42,6 +40,9 @@ public class TestGenericWeapon
 		assertEquals(5, weapon.fire(10));
 	}
 
+	/**
+	 * Test weather weapon can reload .
+	 */
 	@Test
 	public void testReload()
 	{
@@ -54,6 +55,9 @@ public class TestGenericWeapon
 		assertEquals(2, weapon.getActualAmmo());
 	}
 
+	/**
+	 * Test weapon when it is out of Ammo.
+	 */
 	@Test
 	public void testOutOfAmmo()
 	{
@@ -65,6 +69,9 @@ public class TestGenericWeapon
 		assertEquals(0, weapon.fire(10));
 	}
 
+	/**
+	 * Test when the target is out of range.
+	 */
 	@Test
 	public void testOutOfRange()
 	{
@@ -74,6 +81,21 @@ public class TestGenericWeapon
 		assertEquals(0, weapon.fire(35));
 		// Actual ammo is decreased
 		assertEquals(1, weapon.getActualAmmo());
+	}
+
+	/**
+	 * test the intilization of the mock weapon.
+	 */
+	@Test
+	public void testInitilization()
+	{
+		GenericWeapon weapon = new MockGenericWeapon(10, 25, 2, 10);
+		assertEquals(10, weapon.getBaseDamage());
+		assertEquals(25, weapon.getMaxRange());
+		assertEquals(2, weapon.getRateOfFire());
+		assertEquals(10, weapon.getMaxAmmo());
+		assertEquals(10, weapon.getActualAmmo());
+		assertEquals(0, weapon.getFireCounter());
 	}
 
 }

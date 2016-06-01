@@ -6,9 +6,17 @@ import org.junit.Test;
 
 import exceptions.AttachmentException;
 
+/**
+ * The test cases for the Generic Weapon class.
+ * @author Sameer Kumar Kotra
+ */
 public class TestScope
 {
 
+	/**
+	 * Tests the weapon with only one scope attachment.
+	 * @throws AttachmentException
+	 */
 	@Test
 	public void testOneAttachment() throws AttachmentException
 	{
@@ -17,11 +25,16 @@ public class TestScope
 		assertEquals(12, scope.fire(10));
 	}
 
+	/**
+	 * Tests the weapon with all types of attachment combinations.
+	 * @throws AttachmentException
+	 */
 	@Test
 	public void testMltipleAttachment() throws AttachmentException
 	{
 		Weapon weapon;
 
+		// Scope + Scope
 		weapon = new Pistol();
 		Scope scope = new Scope(weapon);
 		Scope scope2 = new Scope(scope);
@@ -29,6 +42,7 @@ public class TestScope
 		assertEquals(19, scope2.fire(10));
 		assertEquals(0, scope2.fire(30));
 
+		// Stabilizer + Scope
 		weapon = new Pistol();
 		Stabilizer stabilizer = new Stabilizer(weapon);
 		scope = new Scope(stabilizer);
@@ -36,6 +50,7 @@ public class TestScope
 		assertEquals(16, scope.fire(10));
 		assertEquals(0, scope.fire(30));
 
+		// PowerBoster + Scope.
 		weapon = new Pistol();
 		PowerBooster booster = new PowerBooster(weapon);
 		scope = new Scope(booster);
@@ -45,6 +60,10 @@ public class TestScope
 
 	}
 
+	/**
+	 * Tests the maximum number of attachments to a weapon.
+	 * @throws AttachmentException
+	 */
 	@Test(expected = AttachmentException.class)
 	public void testMaxAttachments() throws AttachmentException
 	{

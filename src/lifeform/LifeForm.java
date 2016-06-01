@@ -26,7 +26,9 @@ public abstract class LifeForm implements TimeObserver
 	 */
 	protected int attachStrength;
 
-	// TODO
+	/**
+	 * Weapon to store the weapon the LifeForm has.
+	 */
 	private Weapon weapon;
 
 	/**
@@ -129,29 +131,37 @@ public abstract class LifeForm implements TimeObserver
 	{
 	}
 
-	// TODO
+	/**
+	 * Pickup the Weapon.
+	 * @param weapon : The weapon to be picked up.
+	 */
 	public void pickUp(Weapon weapon)
 	{
-		// TODO
 		if (this.weapon == null)
 		{
 			this.weapon = weapon;
 		}
 	}
 
-	// TODO
+	/**
+	 * @return the weapon the LifeForm has.
+	 */
 	public Weapon getWeapon()
 	{
 		return weapon;
 	}
 
-	// TODO
+	/**
+	 * Drops the weapon the LifeForm has.
+	 */
 	public void dropWeapon()
 	{
 		weapon = null;
 	}
 
-	// TODO
+	/**
+	 * Reloads the weapon the lifeForm has.
+	 */
 	public void reload()
 	{
 		weapon.relod();

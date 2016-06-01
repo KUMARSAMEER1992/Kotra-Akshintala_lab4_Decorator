@@ -20,6 +20,9 @@ import weapon.Weapon;
 public class TestLifeForm
 {
 
+	/**
+	 * Tests the lifeForm can pickup only one Weapon.
+	 */
 	@Test
 	public void TestCanPickupWeapon()
 	{
@@ -35,9 +38,13 @@ public class TestLifeForm
 		assertEquals(weapon, entity.getWeapon());
 
 		entity.dropWeapon();
+		// Null as it dropped the weapon.
 		assertNull(entity.getWeapon());
 	}
 
+	/**
+	 * Use weapon as it has Ammo.
+	 */
 	@Test
 	public void TestUseWeapon()
 	{
@@ -52,6 +59,9 @@ public class TestLifeForm
 
 	}
 
+	/**
+	 * Test when weapon has 0 Ammo.
+	 */
 	@Test
 	public void TestDamage()
 	{
@@ -68,10 +78,14 @@ public class TestLifeForm
 
 		Range.distance = 20;
 		lifeForm1.attack(lifeForm2);
+		// No damage as the Target is out of range.
 		assertEquals(20, lifeForm2.getCurrentLifePoints());
 		Range.distance = 0;
 	}
 
+	/**
+	 * Test weather the Weapon can reload.
+	 */
 	@Test
 	public void TestReload()
 	{

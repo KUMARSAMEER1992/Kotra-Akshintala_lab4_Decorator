@@ -13,7 +13,6 @@ public class MockAttachment extends Attachment
 	@Override
 	public int fire(int distence)
 	{
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
